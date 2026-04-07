@@ -11,8 +11,8 @@
 </p>
 
 <p align="center">
-  <b>Brazil Quantum Camp — Block 3: Quantum Computing Solutions</b><br/>
-  <i>Team Q-Trust AI · Group 7</i>
+  <b>Brazil Quantum Camp - Quantum Computing Solutions</b><br/>
+  <i>Team Q-Trust AI</i>
 </p>
 
 ---
@@ -21,9 +21,9 @@
 
 As AI-generated imagery becomes indistinguishable from real photographs, the need for robust detection methods is critical. Q-Trust AI presents a **hybrid classical-quantum architecture** that fuses deep visual features and spectral frequency signatures to classify images as real or synthetic.
 
-Our key insight: generative models like GANs and Diffusion Models leave measurable **spectral fingerprints** — patterns invisible to the human eye but detectable in the frequency domain. By combining these spectral features with ResNet18 semantic embeddings inside a **Variational Quantum Circuit (VQC)**, we exploit quantum entanglement to capture subtle cross-modal correlations.
+Our key insight: generative models like GANs and Diffusion Models leave measurable **spectral fingerprints** - patterns invisible to the human eye but detectable in the frequency domain. By combining these spectral features with ResNet18 semantic embeddings inside a **Variational Quantum Circuit (VQC)**, we exploit quantum entanglement to capture subtle cross-modal correlations.
 
-> **Result:** 90.75% accuracy and F1-Score of 0.9125 on the CIFAKE benchmark — operating in only **6 dimensions** with **72 trainable quantum parameters**, near-matching a classical SVM with 528 dimensions.
+> **Result:** 90.75% accuracy and F1-Score of 0.9125 on the CIFAKE benchmark - operating in only **6 dimensions** with **72 trainable quantum parameters**, near-matching a classical SVM with 528 dimensions.
 
 ---
 
@@ -53,13 +53,14 @@ Input Image (32×32×3)
                               Linear(6→2) ──► Softmax ──► P(fake)
 ```
 
+
 ### Key Design Choices
 
 | Component | Choice | Rationale |
 |-----------|--------|-----------|
 | **Visual Encoder** | ResNet18 (partial fine-tuning) | Rich 512D semantic features; transfer learning from ImageNet |
 | **Spectral Encoder** | Radial FFT (16 bins, 32×32 resolution) | Captures GAN/diffusion sampling artifacts with full frequency granularity |
-| **Embedding** | Orthogonal Angle Embedding (RY + RZ) | Semantic and spectral features occupy separate Bloch sphere axes — no destructive interference |
+| **Embedding** | Orthogonal Angle Embedding (RY + RZ) | Semantic and spectral features occupy separate Bloch sphere axes - no destructive interference |
 | **Entanglement** | CNOT ring | Propagates cross-modal correlations across all qubits |
 | **Re-Uploading** | 4 layers of Data Re-Uploading | Transforms shallow VQC into a universal function approximator |
 | **Optimizer** | AdamW + Label Smoothing (ε=0.05) | Stabilizes classical-quantum gradient interface; prevents overconfidence |
@@ -73,16 +74,16 @@ Input Image (32×32×3)
 | Model | Accuracy | F1-Score | AUC-ROC | Params (quantum) | Input Dim |
 |-------|----------|----------|---------|-----------------|-----------|
 | **VQC Dual-Input (ours)** | **90.75%** | **0.9125** | **0.9563** | **72** | **6** |
-| MLP Equivalent (6D) | 90.75% | 0.9082 | — | ~50 | 6 |
-| Logistic Regression | 90.25% | — | — | — | 528 |
-| SVM RBF (upper bound) | 91.00% | 0.9167 | — | — | 528 |
+| MLP Equivalent (6D) | 90.75% | 0.9082 | - | ~50 | 6 |
+| Logistic Regression | 90.25% | - | - | - | 528 |
+| SVM RBF (upper bound) | 91.00% | 0.9167 | - | - | 528 |
 
-> **The VQC with 6D input outperforms Logistic Regression trained on 528 dimensions**, and ties the classical equivalent MLP on accuracy while surpassing it on F1-Score — suggesting the advantage comes from quantum expressivity via entanglement, not raw computational power.
+> **The VQC with 6D input outperforms Logistic Regression trained on 528 dimensions**, and ties the classical equivalent MLP on accuracy while surpassing it on F1-Score - suggesting the advantage comes from quantum expressivity via entanglement, not raw computational power.
 
 ### Confusion Matrix Highlights
 
-- **Synthetic recall: 96%** — the model catches almost all fake images
-- **Real precision: 85%** — conservative bias ideal for anti-fraud systems
+- **Synthetic recall: 96%** - the model catches almost all fake images
+- **Real precision: 85%** - conservative bias ideal for anti-fraud systems
 - AUC-ROC of **0.9563** demonstrates robust discrimination across all thresholds
 
 ### t-SNE Analysis
@@ -155,17 +156,17 @@ path = kagglehub.dataset_download("bird-j/cifake-real-and-ai-generated-synthetic
 
 | Section | Description |
 |---------|-------------|
-| **1 — Setup & Imports** | Dependencies, global constants, reproducibility seed |
-| **2 — Dataset & FFT Features** | CIFAKE loading, radial power spectrum extraction |
-| **3 — Exploratory Analysis** | Visual samples, spectral signature comparison (real vs. fake) |
-| **4 — Architecture** | VQC circuit definition, ResNet encoder, Angle Embedding |
-| **5 — Hybrid Training** | Data augmentation, AdamW, Label Smoothing, training loop |
-| **6 — Test Evaluation** | Accuracy, F1-Score, AUC-ROC, confusion matrix |
-| **7 — Baseline Models** | SVM RBF, Logistic Regression, MLP 6D |
-| **8 — Comparative Analysis** | ROC curves, precision-recall, probability distributions |
-| **9 — Quantum Circuit Internals** | Pauli-Z observables, t-SNE of quantum latent space |
-| **10 — Computational Complexity** | P vs NP-hard framing; motivation for hybrid QML |
-| **11 — Conclusions & Next Steps** | Full results table, lessons learned, future directions |
+| **1 - Setup & Imports** | Dependencies, global constants, reproducibility seed |
+| **2 - Dataset & FFT Features** | CIFAKE loading, radial power spectrum extraction |
+| **3 - Exploratory Analysis** | Visual samples, spectral signature comparison (real vs. fake) |
+| **4 - Architecture** | VQC circuit definition, ResNet encoder, Angle Embedding |
+| **5 - Hybrid Training** | Data augmentation, AdamW, Label Smoothing, training loop |
+| **6 - Test Evaluation** | Accuracy, F1-Score, AUC-ROC, confusion matrix |
+| **7 - Baseline Models** | SVM RBF, Logistic Regression, MLP 6D |
+| **8 - Comparative Analysis** | ROC curves, precision-recall, probability distributions |
+| **9 - Quantum Circuit Internals** | Pauli-Z observables, t-SNE of quantum latent space |
+| **10 - Computational Complexity** | P vs NP-hard framing; motivation for hybrid QML |
+| **11 - Conclusions & Next Steps** | Full results table, lessons learned, future directions |
 
 ---
 
@@ -184,7 +185,7 @@ path = kagglehub.dataset_download("bird-j/cifake-real-and-ai-generated-synthetic
 
 ## 👥 Team
 
-**Q-Trust AI** — Brazil Quantum Camp 2026, Group 7
+**Q-Trust AI** - Brazil Quantum Camp 2026
 
 Amanda Arruda · Caio Silva · Diogo Lacerda · Eduarda Mendes · Igor Oliveira · Paulo Aquino · Rebeca Vitória Tenório · Vinícius Leal
 
@@ -192,13 +193,13 @@ Amanda Arruda · Caio Silva · Diogo Lacerda · Eduarda Mendes · Igor Oliveira 
 
 ## 📚 References
 
-1. Bird, J. J., & Lotfi, A. (2023). **CIFAKE: Image Classification and Explainable Identification of AI-Generated Synthetic Images**. arXiv:2303.14126. https://arxiv.org/abs/2303.14126
+1. Bird, J. J., & Lotfi, A. (2023). **CIFAKE: Image Classification and Explainable Identification of AI-Generated Synthetic Images**. arXiv:2303.14126. [https://arxiv.org/abs/2303.14126](https://arxiv.org/abs/2303.14126)
 
-2. Blum, A. L., & Rivest, R. L. (1992). **Training a 3-node neural network is NP-complete**. *Neural Networks*, 5(1), 117–127.
+2. Blum, A. L., & Rivest, R. L. (1992). **Training a 3-node neural network is NP-complete**. *Neural Networks*, 5(1), 117-127.
 
 3. Citron, D. K., & Chesney, R. (2019). **Deepfakes and the New Disinformation War**. Boston University School of Law.
 
-4. Pérez-Salinas, A., Cervera-Lierta, A., Gil-Fuster, E., et al. (2020). **Data re-uploading for a universal quantum classifier**. *Quantum*, 4, 226. https://arxiv.org/abs/1907.02085
+4. Pérez-Salinas, A., Cervera-Lierta, A., Gil-Fuster, E., et al. (2020). **Data re-uploading for a universal quantum classifier**. *Quantum*, 4, 226. [https://arxiv.org/abs/1907.02085](https://arxiv.org/abs/1907.02085)
 
 ---
 
